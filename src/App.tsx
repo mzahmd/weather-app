@@ -1,11 +1,17 @@
 import { SearchIcon } from "@chakra-ui/icons"
-import { Box, Container, HStack, Input, InputGroup, InputLeftAddon, Stack, Text } from "@chakra-ui/react"
-import useData from "./hooks/useData"
+import { Box, Container, HStack, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react"
+import { useState } from "react"
+import WeatherData from "./components/WeatherData"
 
 function App() {
+  const [isSearch, setIsSearch] = useState("")
+  const [searchCity, setSearchCity] = useState("")
 
-  const data = useData()
-  console.log(data);
+  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.code === "Enter") {
+      setSearchCity(isSearch)
+    }
+  }
 
   return (
     <Box p={5}>
@@ -14,21 +20,14 @@ function App() {
           <InputLeftAddon>
             <SearchIcon />
           </InputLeftAddon>
-          <Input width='50%' placeholder="Enter a City..." />
+          <Input onChange={(e) => setIsSearch(e.target.value)} value={isSearch} width='50%' placeholder="Enter a City..." onKeyDown={(e) => handleKeyPress(e)} />
         </InputGroup>
       </Box>
       <Box mt={10} pb={10} border="2px" borderRadius={"10"} borderColor='gray.200'>
         <Container>
           <HStack spacing={"20rem"}>
             <Box>Bild</Box>
-            <Box mt={10}>
-              <Stack>
-                <Text fontSize={"xl"}>Today</Text>
-                <Text as={"b"} fontSize={"4xl"} mb={2}>{data && data.name}</Text>
-                <Text fontSize={"2xl"}>{data && Math.ceil(data.main.temp) + " °C"}</Text>
-                <Text>{data && data.weather[0].description}</Text>
-              </Stack>
-            </Box>
+            <WeatherData city={searchCity} />
           </HStack>
         </Container>
       </Box>
