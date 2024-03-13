@@ -1,7 +1,11 @@
 import { SearchIcon } from "@chakra-ui/icons"
 import { Box, Container, HStack, Input, InputGroup, InputLeftAddon, Stack, Text } from "@chakra-ui/react"
+import useData from "./hooks/useData"
 
 function App() {
+
+  const data = useData()
+  console.log(data);
 
   return (
     <Box p={5}>
@@ -19,17 +23,14 @@ function App() {
             <Box>Bild</Box>
             <Box mt={10}>
               <Stack>
-                <Text>Day</Text>
-                <Text as={"b"} fontSize={"4xl"} mb={2}>City</Text>
-                <Text>Temperatur</Text>
-                <Text>Info</Text>
+                <Text fontSize={"xl"}>Today</Text>
+                <Text as={"b"} fontSize={"4xl"} mb={2}>{data && data.name}</Text>
+                <Text fontSize={"2xl"}>{data && Math.ceil(data.main.temp) + " °C"}</Text>
+                <Text>{data && data.weather[0].description}</Text>
               </Stack>
             </Box>
           </HStack>
         </Container>
-      </Box>
-      <Box>
-
       </Box>
     </Box>
   )
