@@ -1,5 +1,5 @@
 import { SearchIcon } from "@chakra-ui/icons"
-import { Box, Container, HStack, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react"
+import { Box, Container, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react"
 import { useState } from "react"
 import WeatherData from "./components/WeatherData"
 
@@ -25,10 +25,7 @@ function App() {
       </Box>
       <Box mt={10} pb={10} border="2px" borderRadius={"10"} borderColor='gray.200'>
         <Container>
-          <HStack spacing={"20rem"}>
-            <Box>Bild</Box>
-            <WeatherData city={searchCity} />
-          </HStack>
+          <WeatherData city={searchCity} />
         </Container>
       </Box>
     </Box>
