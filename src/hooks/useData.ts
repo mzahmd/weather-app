@@ -13,14 +13,14 @@ interface MainData {
   humidity: number;
 }
 
-interface FetchResponse {
+export interface WeatherResponse {
   name: string;
   weather: WeatherData[];
   main: MainData;
   wind: { speed: number };
 }
 
-export default function useData(city?: string): FetchResponse | null {
+export default function useData(city?: string): WeatherResponse | null {
   const [data, setData] = useState(null);
 
   useEffect(() => {

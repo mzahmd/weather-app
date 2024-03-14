@@ -9,7 +9,7 @@ function App() {
   const [searchCity, setSearchCity] = useState("")
 
   function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.code === "Enter") {
+    if (e.code === "Enter") {      
       setSearchCity(isSearch)
     }
   }
@@ -26,11 +26,10 @@ function App() {
           </InputGroup>
           <ColorSwitch />
         </HStack>
-        <Box mt={10} pb={10} border="2px" borderRadius={"10"} borderColor='gray.200'>
-          <Container>
+        {searchCity &&
+          <Container mt={10} p={10} border="2px" borderRadius={"10"} borderColor='gray.400' centerContent>
             <WeatherData city={searchCity} />
-          </Container>
-        </Box>
+          </Container>}
       </Box>
     </>
   )
