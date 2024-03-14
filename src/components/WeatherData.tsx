@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
 import useData from "../hooks/useData";
 import WeatherImage from "./WeatherImage";
 
@@ -12,12 +12,16 @@ export default function WeatherData({ city }: Props) {
   return (
     <Box>
       {data &&
-        <Stack>
+        <>
+          <HStack>
+            <Text fontSize={"2xl"}>{data.main && Math.ceil(data.main.temp) + " °C"}</Text>
+            <WeatherImage icon={data.weather && data.weather[0].icon} />
+          </HStack>
+          <Text fontSize={"2xl"}>{data.weather && data.weather[0].description}</Text>
           <Text as={"b"} fontSize={"4xl"} mb={2}>{data.name}</Text>
-          <WeatherImage icon={data.weather && data.weather[0].icon} />
-          <Text fontSize={"2xl"}>{data.main && Math.ceil(data.main.temp) + " °C"}</Text>
-          <Text>{data.weather && data.weather[0].description}</Text>
-        </Stack>
+          <Text>{data.wind && `wind speed: ${Math.ceil(data.wind.speed)} km/h`}</Text>
+          <Text>{data.main && `humidity: ${data.main.humidity}`}</Text>
+        </>
       }
     </Box>
   )

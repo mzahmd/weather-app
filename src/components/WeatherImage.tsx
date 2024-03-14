@@ -6,7 +6,7 @@ interface Props {
 
 export default function WeatherImage({ icon }: Props) {
   return (
-    <Box>
+    <Box mb={0}>
       <Image src={"https://openweathermap.org/img/wn/" + icon + ".png"} alt="" />
     </Box>
   )
