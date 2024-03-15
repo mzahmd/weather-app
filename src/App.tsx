@@ -9,8 +9,9 @@ function App() {
   const [searchCity, setSearchCity] = useState("")
 
   function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.code === "Enter") {
-      setSearchCity(isSearch)
+    if (e.code === "Enter" &&  isSearch.trim() !== "") {
+      setSearchCity(isSearch.trim())
+      setIsSearch("")
     }
   }
 
@@ -22,12 +23,12 @@ function App() {
             <InputLeftAddon>
               <SearchIcon />
             </InputLeftAddon>
-            <Input onChange={(e) => setIsSearch(e.target.value)} value={isSearch} width='50%' placeholder="Enter a City..." onKeyDown={(e) => handleKeyPress(e)} />
+            <Input variant={"filled"} onChange={(e) => setIsSearch(e.target.value)} value={isSearch} width='50%' placeholder="Enter a City..." onKeyDown={(e) => handleKeyPress(e)} />
           </InputGroup>
           <ColorSwitch />
         </HStack>
         <Container mt={10} p={10} border="2px" borderRadius={"10"} borderColor='gray.400' centerContent>
-          {searchCity && <WeatherData city={searchCity} />}
+          {searchCity && <WeatherData city={searchCity} deleteCityInput={(str) => setSearchCity(str)}/>}
         </Container>
       </Box>
     </>
