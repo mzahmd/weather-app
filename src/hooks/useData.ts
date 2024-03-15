@@ -23,11 +23,11 @@ interface ErrorResponse {
   message: string;
 }
 
-export default function useData(city?: string) {
+export default function useData(city: string) {
   const [data, setData] = useState<WeatherResponse | null>(null);
   const [error, setError] = useState<ErrorResponse | null>(null);
 
-  useEffect(() => {    
+  useEffect(() => {
     async function fetchData() {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${

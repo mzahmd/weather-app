@@ -23,11 +23,11 @@ function App() {
             <InputLeftAddon>
               <SearchIcon />
             </InputLeftAddon>
-            <Input variant={"filled"} onChange={(e) => setIsSearch(e.target.value)} value={isSearch} width='50%' placeholder="Enter a City..." onKeyDown={(e) => handleKeyPress(e)} />
+            <Input variant={"filled"} onChange={(e) => setIsSearch(e.target.value)} value={isSearch} placeholder={"Enter a City..."} onKeyDown={(e) => handleKeyPress(e)} />
           </InputGroup>
           <ColorSwitch />
         </HStack>
-        <Container mt={10} p={10} border="2px" borderRadius={"10"} borderColor='gray.400' centerContent>
+        <Container mt={10} p={10} border={"2px"} borderRadius={"10"} borderColor={"gray.400"} centerContent>
           {searchCity && <WeatherData city={searchCity} />}
         </Container>
       </Box>
