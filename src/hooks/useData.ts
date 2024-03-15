@@ -9,7 +9,6 @@ interface WeatherData {
 
 interface MainData {
   temp: number;
-  pressure: number;
   humidity: number;
 }
 
@@ -20,10 +19,15 @@ export interface WeatherResponse {
   wind: { speed: number };
 }
 
-export default function useData(city?: string): WeatherResponse | null {
-  const [data, setData] = useState(null);
+interface ErrorResponse {
+  message: string;
+}
 
-  useEffect(() => {
+export default function useData(city?: string) {
+  const [data, setData] = useState<WeatherResponse | null>(null);
+  const [error, setError] = useState<ErrorResponse | null>(null);
+
+  useEffect(() => {    
     async function fetchData() {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
@@ -35,10 +39,16 @@ export default function useData(city?: string): WeatherResponse | null {
           alert("Eingabe Ungültig");
         });
 
-      setData(response);
+      if (response.cod === 200) {
+        setData(response);
+        setError(null);
+      } else {
+        setError(response);
+        setData(null);
+      }
     }
     fetchData();
   }, [city]);
 
-  return data;
+  return { data, error };
 }

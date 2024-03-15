@@ -7,7 +7,11 @@ interface Props {
 }
 
 export default function WeatherData({ city }: Props) {
-  const data = useData(city)
+  const { data, error } = useData(city)
+  
+  if (error) {    
+    return <Text fontSize={"xl"}>{error.message}</Text>
+  }
 
   return (
     <Box>

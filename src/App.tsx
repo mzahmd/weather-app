@@ -9,7 +9,7 @@ function App() {
   const [searchCity, setSearchCity] = useState("")
 
   function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.code === "Enter" &&  isSearch.trim() !== "") {
+    if (e.code === "Enter" && isSearch.trim() !== "") {
       setSearchCity(isSearch.trim())
       setIsSearch("")
     }
@@ -28,7 +28,7 @@ function App() {
           <ColorSwitch />
         </HStack>
         <Container mt={10} p={10} border="2px" borderRadius={"10"} borderColor='gray.400' centerContent>
-          {searchCity && <WeatherData city={searchCity} deleteCityInput={(str) => setSearchCity(str)}/>}
+          {searchCity && <WeatherData city={searchCity} />}
         </Container>
       </Box>
     </>
