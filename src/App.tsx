@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { SearchIcon } from "@chakra-ui/icons"
-import { Box, Container, HStack, Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
+import { Box, Container, HStack, Input, InputGroup, InputLeftElement, Text } from "@chakra-ui/react"
 
 import ColorSwitch from "./components/ColorSwitch"
 import WeatherData from "./components/WeatherData"
@@ -29,9 +29,7 @@ function App() {
         </form>
         <ColorSwitch />
       </HStack>
-      <Container mt={10} p={10} border={"2px"} borderRadius={"10"} borderColor={"gray.400"} centerContent>
-        {cityValue && <WeatherData city={cityValue} />}
-      </Container>
+      {cityValue && <WeatherData city={cityValue} />}
     </Box>
   )
 }

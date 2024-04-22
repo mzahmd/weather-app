@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, Container, HStack, Text } from "@chakra-ui/react";
 import useData from "../hooks/useData";
 import WeatherImage from "./WeatherImage";
 
@@ -16,7 +16,7 @@ export default function WeatherData({ city }: Props) {
   }
 
   return (
-    <Box>
+    <Container centerContent mt={10}>
       {data &&
         <>
           <HStack>
@@ -29,6 +29,6 @@ export default function WeatherData({ city }: Props) {
           <Text>{`humidity: ${data.main.humidity}`}</Text>
         </>
       }
-    </Box>
+    </Container>
   )
 }
