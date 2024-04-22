@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { SearchIcon } from "@chakra-ui/icons"
-import { Box, Container, HStack, Input, InputGroup, InputLeftElement, Text } from "@chakra-ui/react"
+import { Box, HStack, Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
 
 import ColorSwitch from "./components/ColorSwitch"
 import WeatherData from "./components/WeatherData"

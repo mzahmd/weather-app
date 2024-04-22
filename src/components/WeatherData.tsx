@@ -1,4 +1,4 @@
-import { Box, Container, HStack, Text } from "@chakra-ui/react";
+import { Container, HStack, Text } from "@chakra-ui/react";
 import useData from "../hooks/useData";
 import WeatherImage from "./WeatherImage";
 
