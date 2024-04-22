@@ -1,4 +1,5 @@
 import { Box, Image } from "@chakra-ui/react";
+import { IMAGE_URL } from "../data/constant";
 
 interface Props {
   icon: string
@@ -7,7 +8,7 @@ interface Props {
 export default function WeatherImage({ icon }: Props) {
   return (
     <Box mb={0}>
-      <Image src={"https://openweathermap.org/img/wn/" + icon + ".png"} alt="weather - image" />
+      <Image src={`${IMAGE_URL}${icon}.png`} alt="weather - image" />
     </Box>
   )
 }

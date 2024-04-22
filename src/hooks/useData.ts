@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../data/constant";
 
 interface WeatherData {
   id: number;
@@ -28,26 +29,19 @@ export default function useData(city: string) {
   const [error, setError] = useState<ErrorResponse | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
-          import.meta.env.VITE_KEY
-        }`
-      )
-        .then((r) => r.json())
-        .catch(() => {
-          alert("Eingabe Ungültig");
-        });
-
-      if (response.cod === 200) {
-        setData(response);
-        setError(null);
-      } else {
-        setError(response);
-        setData(null);
-      }
-    }
-    fetchData();
+    fetch(`${API_URL}?q=${city}&units=metric&appid=${import.meta.env.VITE_KEY}`)
+      .then((r) => r.json())
+      .then((response) => {
+        if (response.cod === 200) {
+          setData(response);
+          setError(null);
+        } else {
+          throw new Error("City not Found");
+        }
+      })
+      .catch((e) => {
+        setError(e);
+      });
   }, [city]);
 
   return { data, error };
