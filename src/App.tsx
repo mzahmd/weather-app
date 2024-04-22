@@ -7,30 +7,30 @@ import ColorSwitch from "./components/ColorSwitch"
 import WeatherData from "./components/WeatherData"
 
 function App() {
-  const [isSearch, setIsSearch] = useState("")
-  const [searchCity, setSearchCity] = useState("")
+  const [searchValue, setSearchValue] = useState("")
+  const [cityValue, setCityValue] = useState("")
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSearchCity(isSearch)
-    setIsSearch("")
+    setCityValue(searchValue)
+    setSearchValue("")
   }
 
   return (
     <Box p={5}>
-      <HStack justify={"center"}>
+      <HStack justify={"space-between"}>
         <form onSubmit={(e) => handleSubmit(e)}>
           <InputGroup>
             <InputLeftAddon>
               <SearchIcon />
             </InputLeftAddon>
-            <Input variant={"filled"} onChange={(e) => setIsSearch(e.target.value)} value={isSearch} placeholder={"Enter a City..."} />
+            <Input variant={"filled"} onChange={(e) => setSearchValue(e.target.value)} value={searchValue} placeholder={"Enter a City..."} />
           </InputGroup>
         </form>
         <ColorSwitch />
       </HStack>
       <Container mt={10} p={10} border={"2px"} borderRadius={"10"} borderColor={"gray.400"} centerContent>
-        {searchCity && <WeatherData city={searchCity} />}
+        {cityValue && <WeatherData city={cityValue} />}
       </Container>
     </Box>
   )
