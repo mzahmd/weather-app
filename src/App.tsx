@@ -10,7 +10,7 @@ function App() {
   const [isSearch, setIsSearch] = useState("")
   const [searchCity, setSearchCity] = useState("")
 
-  function handleSubmit(e: React.FormEvent<HTMLInputElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setSearchCity(isSearch)
     setIsSearch("")
