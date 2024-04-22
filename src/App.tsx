@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { SearchIcon } from "@chakra-ui/icons"
-import { Box, Container, HStack, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react"
+import { Box, Container, HStack, Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
 
 import ColorSwitch from "./components/ColorSwitch"
 import WeatherData from "./components/WeatherData"
@@ -18,12 +18,12 @@ function App() {
 
   return (
     <Box p={5}>
-      <HStack justify={"space-between"}>
+      <HStack justifyContent={"space-between"}>
         <form onSubmit={(e) => handleSubmit(e)}>
           <InputGroup>
-            <InputLeftAddon>
+            <InputLeftElement pointerEvents={"none"}>
               <SearchIcon />
-            </InputLeftAddon>
+            </InputLeftElement>
             <Input variant={"filled"} onChange={(e) => setSearchValue(e.target.value)} value={searchValue} placeholder={"Enter a City..."} />
           </InputGroup>
         </form>

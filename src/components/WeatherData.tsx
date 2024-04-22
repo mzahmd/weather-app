@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, Container, HStack, Text } from "@chakra-ui/react";
 import useData from "../hooks/useData";
 import WeatherImage from "./WeatherImage";
 
@@ -10,7 +10,11 @@ export default function WeatherData({ city }: Props) {
   const { data, error } = useData(city)
 
   if (error) {
-    return <Text fontSize={"xl"}>{error.message}</Text>
+    return (
+      <Container mt={10} centerContent>
+        <Text fontSize={"xl"}>{error.message}</Text>
+      </Container>
+    )
   }
 
   return (
