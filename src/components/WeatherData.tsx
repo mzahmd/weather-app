@@ -8,8 +8,8 @@ interface Props {
 
 export default function WeatherData({ city }: Props) {
   const { data, error } = useData(city)
-  
-  if (error) {    
+
+  if (error) {
     return <Text fontSize={"xl"}>{error.message}</Text>
   }
 
@@ -18,13 +18,13 @@ export default function WeatherData({ city }: Props) {
       {data &&
         <>
           <HStack>
-            <Text fontSize={"2xl"}>{data.main && Math.ceil(data.main.temp) + " °C"}</Text>
-            <WeatherImage icon={data.weather && data.weather[0].icon} />
+            <Text fontSize={"2xl"}>{Math.ceil(data.main.temp) + " °C"}</Text>
+            <WeatherImage icon={data.weather[0].icon} />
           </HStack>
-          <Text fontSize={"2xl"}>{data.weather && data.weather[0].description}</Text>
+          <Text fontSize={"2xl"}>{data.weather[0].description}</Text>
           <Text as={"b"} fontSize={"4xl"} mb={2}>{data.name}</Text>
-          <Text>{data.wind && `wind speed: ${Math.ceil(data.wind.speed)} km/h`}</Text>
-          <Text>{data.main && `humidity: ${data.main.humidity}`}</Text>
+          <Text>{`wind speed: ${Math.ceil(data.wind.speed)} km/h`}</Text>
+          <Text>{`humidity: ${data.main.humidity}`}</Text>
         </>
       }
     </Box>
