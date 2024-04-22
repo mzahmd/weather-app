@@ -16,22 +16,20 @@ function App() {
   }
 
   return (
-    <>
-      <Box p={5}>
-        <HStack>
-          <InputGroup>
-            <InputLeftAddon>
-              <SearchIcon />
-            </InputLeftAddon>
-            <Input variant={"filled"} onChange={(e) => setIsSearch(e.target.value)} value={isSearch} placeholder={"Enter a City..."} onKeyDown={(e) => handleKeyPress(e)} />
-          </InputGroup>
-          <ColorSwitch />
-        </HStack>
-        <Container mt={10} p={10} border={"2px"} borderRadius={"10"} borderColor={"gray.400"} centerContent>
-          {searchCity && <WeatherData city={searchCity} />}
-        </Container>
-      </Box>
-    </>
+    <Box p={5}>
+      <HStack>
+        <InputGroup>
+          <InputLeftAddon>
+            <SearchIcon />
+          </InputLeftAddon>
+          <Input variant={"filled"} onChange={(e) => setIsSearch(e.target.value)} value={isSearch} placeholder={"Enter a City..."} onKeyDown={(e) => handleKeyPress(e)} />
+        </InputGroup>
+        <ColorSwitch />
+      </HStack>
+      <Container mt={10} p={10} border={"2px"} borderRadius={"10"} borderColor={"gray.400"} centerContent>
+        {searchCity && <WeatherData city={searchCity} />}
+      </Container>
+    </Box>
   )
 }
 
