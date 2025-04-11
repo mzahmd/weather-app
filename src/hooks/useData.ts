@@ -13,7 +13,7 @@ interface MainData {
   humidity: number;
 }
 
-export interface WeatherResponse {
+interface WeatherResponse {
   name: string;
   weather: WeatherData[];
   main: MainData;
